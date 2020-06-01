@@ -136,6 +136,19 @@ if (os == "ubuntu") {
     ppa = ppa
   )
 }
+if (os == "windows") {
+  packages <- c(
+    "git",
+    "wget",
+    "hub",
+    "vim",
+    "imagemagick",
+    "poppler"
+  )
+  term_install(
+    packages = packages
+  )
+}
 #'
 #' ## Configs
 #' 

@@ -16,9 +16,8 @@ r_github_packages:
 - jeksterslabRds/jeksterslabRutils
 - jeksterslabRds/jeksterslabRterm
 cache: packages
-before_install:
-- Rscript -e 'if (!require("rmarkdown")) install.packages("rmarkdown", repos = "https://cran.rstudio.org")'
 install:
 - Rscript "deploy.R"
 script:
+- Rscript -e 'if (!require("rmarkdown")) install.packages("rmarkdown", repos = "https://cran.rstudio.org")'
 - Rscript -e 'rmarkdown::render("deploy.R")'
