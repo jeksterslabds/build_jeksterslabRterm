@@ -16,6 +16,9 @@ source("https://raw.githubusercontent.com/jeksterslabds/jeksterslabRterm/master/
 source("https://raw.githubusercontent.com/jeksterslabds/jeksterslabRterm/master/R/term_renviron.R")
 dir <- Sys.getenv("HOME")
 GITHUB_PAT <- "TODO"
+if (dir == "/home/travis" | dir == "/Users/travis") {
+  GITHUB_PAT <- Sys.getenv("GITHUB_PAT")  
+}
 #'
 #+ user_lib
 term_user_lib(
