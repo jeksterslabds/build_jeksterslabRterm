@@ -131,6 +131,7 @@ if (os == "osx") {
     "neofetch",
     "wget",
     "git",
+    "hub",
     "bash-completion@2",
     "tmux",
     "macvim",
@@ -147,6 +148,7 @@ if (os == "arch linux") {
     "neofetch",
     "wget",
     "git",
+    "hub",
     "bash-completion",
     "xterm",
     "tmux",
@@ -158,5 +160,28 @@ if (os == "arch linux") {
   )
   jeksterslabRterm::term_install(
     packages = packages
+  )
+if (os == "ubuntu") {
+  packages <- c(
+    "neofetch",
+    "wget",
+    "git-all",
+    "hub",
+    "bash-completion",
+    "xterm",
+    "tmux",
+    "vim",
+    "libmagick++-dev",
+    "libpoppler-cpp-dev"
+  )
+  ppa <- c(
+    "dawidd0811/neofetch",
+    "cpick/hub",
+    "cran/imagemagick",
+    "cran/poppler"
+  )
+  jeksterslabRterm::term_install(
+    packages = packages,
+    ppa = ppa
   )
 }
