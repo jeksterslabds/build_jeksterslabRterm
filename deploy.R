@@ -7,6 +7,8 @@
 #'     toc: true
 #' ---
 #'
+#' ## Setup
+#' 
 #+ setup
 source("https://raw.githubusercontent.com/jeksterslabds/jeksterslabRutils/master/R/util_txt2file.R")
 source("https://raw.githubusercontent.com/jeksterslabds/jeksterslabRutils/master/R/util_os.R")
@@ -29,6 +31,8 @@ term_renviron(
   GITHUB_PAT = GITHUB_PAT,
   libpath = NULL
 )
+#'
+#' ## Install R Package Dependencies
 #'
 #+ r_packages
 repos <- "https://cran.rstudio.org"
@@ -60,9 +64,81 @@ if (os == "osx" | os == "linux") {
   )
 }
 #'
-#+ library
-library(jeksterslabRterm)
+#' ## Regenerate README.md
 #'
+#+ readme
+rmarkdown::render("README.Rmd")
+#' 
+#' ## Install Terminal Tools
+#'
+#+ install_terminal_tools
+library(jeksterslabRutils)
+library(jeksterslabRterm)
+os <- util_distro()
+os
+if (os == "osx") {
+  packages <- c(
+    "neofetch",
+    "wget",
+    "git",
+    "hub",
+    "bash-completion@2",
+    "tmux",
+    "macvim",
+    "imagemagick",
+    "poppler",
+    "rustup"
+  )
+  term_install(
+    packages = packages
+  )
+}
+if (os == "arch linux") {
+  packages <- c(
+    "neofetch",
+    "wget",
+    "git",
+    "hub",
+    "bash-completion",
+    "xterm",
+    "tmux",
+    "gvim",
+    "imagemagick",
+    "poppler",
+    "rust",
+    "cargo"
+  )
+  term_install(
+    packages = packages
+  )
+}
+if (os == "ubuntu") {
+  packages <- c(
+    "neofetch",
+    "wget",
+    "git-all",
+    "hub",
+    "bash-completion",
+    "xterm",
+    "tmux",
+    "vim",
+    "libmagick++-dev",
+    "libpoppler-cpp-dev"
+  )
+  ppa <- c(
+    "dawidd0811/neofetch",
+    "cpick/hub",
+    "cran/imagemagick",
+    "cran/poppler"
+  )
+  term_install(
+    packages = packages,
+    ppa = ppa
+  )
+}
+#'
+#' ## Configs
+#' 
 #+ git
 term_git_config(
   name = "Ivan Jacob Agaloos Pesigan",
@@ -122,66 +198,3 @@ term_vim(
   dark = TRUE,
   colorscheme = "default"
 )
-#'
-#+ install_terminal_tools
-os <- jeksterslabRutils::util_distro()
-os
-if (os == "osx") {
-  packages <- c(
-    "neofetch",
-    "wget",
-    "git",
-    "hub",
-    "bash-completion@2",
-    "tmux",
-    "macvim",
-    "imagemagick",
-    "poppler",
-    "rustup"
-  )
-  jeksterslabRterm::term_install(
-    packages = packages
-  )
-}
-if (os == "arch linux") {
-  packages <- c(
-    "neofetch",
-    "wget",
-    "git",
-    "hub",
-    "bash-completion",
-    "xterm",
-    "tmux",
-    "gvim",
-    "imagemagick",
-    "poppler",
-    "rust",
-    "cargo"
-  )
-  jeksterslabRterm::term_install(
-    packages = packages
-  )
-if (os == "ubuntu") {
-  packages <- c(
-    "neofetch",
-    "wget",
-    "git-all",
-    "hub",
-    "bash-completion",
-    "xterm",
-    "tmux",
-    "vim",
-    "libmagick++-dev",
-    "libpoppler-cpp-dev"
-  )
-  ppa <- c(
-    "dawidd0811/neofetch",
-    "cpick/hub",
-    "cran/imagemagick",
-    "cran/poppler"
-  )
-  jeksterslabRterm::term_install(
-    packages = packages,
-    ppa = ppa
-  )
-}
