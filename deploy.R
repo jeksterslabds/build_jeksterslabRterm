@@ -8,7 +8,7 @@
 #' ---
 #'
 #' ## Setup
-#' 
+#'
 #+ setup
 source("https://raw.githubusercontent.com/jeksterslabds/jeksterslabRutils/master/R/util_txt2file.R")
 source("https://raw.githubusercontent.com/jeksterslabds/jeksterslabRutils/master/R/util_os.R")
@@ -17,7 +17,7 @@ source("https://raw.githubusercontent.com/jeksterslabds/jeksterslabRterm/master/
 dir <- Sys.getenv("HOME")
 GITHUB_PAT <- "TODO"
 if (dir == "/home/travis" | dir == "/Users/travis") {
-  GITHUB_PAT <- Sys.getenv("GITHUB_PAT")  
+  GITHUB_PAT <- Sys.getenv("GITHUB_PAT")
 }
 #'
 #+ user_lib
@@ -71,7 +71,7 @@ if (os == "osx" | os == "linux") {
 #'
 #+ readme
 rmarkdown::render("README.Rmd")
-#' 
+#'
 #' ## Install Terminal Tools
 #'
 #+ install_terminal_tools
@@ -154,7 +154,7 @@ if (os == "windows") {
 }
 #'
 #' ## Configs
-#' 
+#'
 #+ git
 term_git_config(
   name = "Ivan Jacob Agaloos Pesigan",
