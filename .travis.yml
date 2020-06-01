@@ -19,5 +19,4 @@ cache: packages
 install:
 - Rscript "deploy.R"
 script:
-- Rscript -e 'if (!require("rmarkdown")) install.packages("rmarkdown", repos = "https://cran.rstudio.org")'
-- Rscript -e 'rmarkdown::render("deploy.R")'
+- echo Done
